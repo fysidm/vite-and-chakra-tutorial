@@ -18,6 +18,7 @@ import {
   UpgradeIcon,
 } from "./icons/sidebar-icons";
 import { Tooltip } from "./components/ui/tooltip";
+import { ChatGPTMenu } from "./ChatGPTMenu";
 
 function App() {
   return (
@@ -101,7 +102,9 @@ function App() {
       </Box>
       <Box>
         <Stack h="full">
-          <Box>Top</Box>
+          <Box>
+            <ChatGPTMenu />
+          </Box>
           <Center flex="1">Middle</Center>
           <Box pb="2">Bottom</Box>
         </Stack>
