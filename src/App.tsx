@@ -19,6 +19,7 @@ import {
 } from "./icons/sidebar-icons";
 import { Tooltip } from "./components/ui/tooltip";
 import { ChatGPTMenu } from "./ChatGPTMenu";
+import { Avatar } from "./components/ui/avatar";
 
 function App() {
   return (
@@ -100,11 +101,18 @@ function App() {
           </Link>
         </Stack>
       </Box>
-      <Box>
+      <Box flex={1}>
         <Stack h="full">
-          <Box>
+          <Flex justify="space-between" align="center" p={2}>
             <ChatGPTMenu />
-          </Box>
+            <Avatar
+              name="George"
+              size="sm"
+              colorPalette="teal"
+              variant="solid"
+              mr={3}
+            />
+          </Flex>
           <Center flex="1">Middle</Center>
           <Box pb="2">Bottom</Box>
         </Stack>
