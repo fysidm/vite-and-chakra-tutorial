@@ -10,6 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 
+import { useSidebarContext } from "./hooks/use-sidebar";
 import {
   ExploreGPTIcon,
   NewChatIcon,
@@ -18,7 +19,6 @@ import {
   UpgradeIcon,
 } from "./icons/sidebar-icons";
 import { Tooltip } from "./components/ui/tooltip";
-import { useSidebarContext } from "./sidebar-context";
 
 export function Sidebar() {
   const { sideBarVisible, toggleSidebar } = useSidebarContext();

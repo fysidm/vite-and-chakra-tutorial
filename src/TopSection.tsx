@@ -1,10 +1,10 @@
 import { Flex, IconButton } from "@chakra-ui/react";
 
+import { useSidebarContext } from "./hooks/use-sidebar";
 import { NewChatIcon, SidebarIcon } from "./icons/sidebar-icons";
 import { Tooltip } from "./components/ui/tooltip";
-import { ChatGPTMenu } from "./ChatGPTMenu";
 import { Avatar } from "./components/ui/avatar";
-import { useSidebarContext } from "./sidebar-context";
+import { ChatGPTMenu } from "./ChatGPTMenu";
 
 export function TopSection() {
   const { sideBarVisible, toggleSidebar } = useSidebarContext();
