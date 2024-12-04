@@ -59,9 +59,14 @@ function PromptButton(props: PromptButtonProps) {
 
 function App() {
   const [sideBarVisible, setSideBarVisible] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   const toggleSideBarVisible = () => {
     setSideBarVisible(!sideBarVisible);
+  };
+
+  const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
   };
 
   return (
@@ -194,7 +199,12 @@ function App() {
                     </FileUploadRoot>
                   }
                   endElement={
-                    <IconButton fontSize="2xl" size="sm" borderRadius="full">
+                    <IconButton
+                      fontSize="2xl"
+                      size="sm"
+                      borderRadius="full"
+                      disabled={inputValue.trim() === ""}
+                    >
                       <EnterIcon fontSize="2xl" />
                     </IconButton>
                   }
@@ -204,6 +214,8 @@ function App() {
                     variant="subtle"
                     size="lg"
                     borderRadius="3xl"
+                    value={inputValue}
+                    onChange={handleInputValue}
                   />
                 </InputGroup>
               </Center>
