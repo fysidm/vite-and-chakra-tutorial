@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Box,
   Center,
@@ -57,9 +58,20 @@ function PromptButton(props: PromptButtonProps) {
 }
 
 function App() {
+  const [sideBarVisible, setSideBarVisible] = useState(false);
+
+  const toggleSideBarVisible = () => {
+    setSideBarVisible(!sideBarVisible);
+  };
+
   return (
     <Flex minH={"100dvh"}>
-      <Box bg={"bg.muted"} w={"260px"}>
+      <Box
+        bg={"bg.muted"}
+        w={!sideBarVisible ? "0" : "260px"}
+        overflow="hidden"
+        transition="width 0.3s"
+      >
         <Stack h={"full"} px={3} py={2}>
           <Flex justify={"space-between"}>
             <Tooltip
@@ -67,7 +79,7 @@ function App() {
               content="Close sidebar"
               positioning={{ placement: "right" }}
             >
-              <IconButton variant={"ghost"}>
+              <IconButton variant={"ghost"} onClick={toggleSideBarVisible}>
                 <SidebarIcon fontSize={"2xl"} color={"fg.muted"} />
               </IconButton>
             </Tooltip>
@@ -139,7 +151,26 @@ function App() {
       <Box flex={1}>
         <Stack h="full">
           <Flex justify="space-between" align="center" p={2}>
-            <ChatGPTMenu />
+            {!sideBarVisible && (
+              <Flex>
+                <Tooltip
+                  showArrow
+                  content="Open sidebar"
+                  positioning={{ placement: "right" }}
+                >
+                  <IconButton variant={"ghost"} onClick={toggleSideBarVisible}>
+                    <SidebarIcon fontSize={"2xl"} color={"fg.muted"} />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip showArrow content="New chat">
+                  <IconButton variant={"ghost"}>
+                    <NewChatIcon fontSize={"2xl"} color={"fg.muted"} />
+                  </IconButton>
+                </Tooltip>
+                <ChatGPTMenu />
+              </Flex>
+            )}
+            {sideBarVisible && <ChatGPTMenu />}
             <Avatar
               name="George"
               size="sm"
