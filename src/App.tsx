@@ -3,11 +3,15 @@ import {
   Center,
   Circle,
   Flex,
+  Heading,
   HStack,
   IconButton,
+  Input,
   Link,
+  Span,
   Stack,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 
 import {
@@ -20,6 +24,37 @@ import {
 import { Tooltip } from "./components/ui/tooltip";
 import { ChatGPTMenu } from "./ChatGPTMenu";
 import { Avatar } from "./components/ui/avatar";
+import { InputGroup } from "./components/ui/input-group";
+import {
+  FileUploadList,
+  FileUploadRoot,
+  FileUploadTrigger,
+} from "./components/ui/file-upload";
+import {
+  BirthdayIcon,
+  ChartIcon,
+  CodeIcon,
+  EnterIcon,
+  IllustrationIcon,
+  UploadIcon,
+} from "./icons/other-icons";
+import { Button } from "./components/ui/button";
+
+interface PromptButtonProps {
+  icon?: React.ReactElement;
+  description: string;
+}
+
+function PromptButton(props: PromptButtonProps) {
+  const { icon, description } = props;
+
+  return (
+    <Button variant="outline" borderRadius="full">
+      {icon}
+      <Span color="fg.subtle">{description}</Span>
+    </Button>
+  );
+}
 
 function App() {
   return (
@@ -113,7 +148,55 @@ function App() {
               mr={3}
             />
           </Flex>
-          <Center flex="1">Middle</Center>
+          <Center flex="1">
+            <VStack gap={6}>
+              <Heading size="3xl">What can I help with?</Heading>
+              <Center>
+                <InputGroup
+                  minW={768}
+                  startElement={
+                    <FileUploadRoot>
+                      <FileUploadTrigger asChild>
+                        <UploadIcon fontSize="2xl" color="fg" />
+                      </FileUploadTrigger>
+                      <FileUploadList />
+                    </FileUploadRoot>
+                  }
+                  endElement={
+                    <IconButton fontSize="2xl" size="sm" borderRadius="full">
+                      <EnterIcon fontSize="2xl" />
+                    </IconButton>
+                  }
+                >
+                  <Input
+                    placeholder="Message ChatGPT"
+                    variant="subtle"
+                    size="lg"
+                    borderRadius="3xl"
+                  />
+                </InputGroup>
+              </Center>
+              <HStack gap={2}>
+                <PromptButton
+                  icon={<IllustrationIcon color="green.500" fontSize="lg" />}
+                  description="Create image"
+                />
+                <PromptButton
+                  icon={<CodeIcon color="blue.500" fontSize="lg" />}
+                  description="Code"
+                />
+                <PromptButton
+                  icon={<ChartIcon color="cyan.400" fontSize="lg" />}
+                  description="Analyze data"
+                />
+                <PromptButton
+                  icon={<BirthdayIcon color="cyan.400" fontSize="lg" />}
+                  description="Surprise"
+                />
+                <PromptButton description="More" />
+              </HStack>
+            </VStack>
+          </Center>
           <Box pb="2">Bottom</Box>
         </Stack>
       </Box>
