@@ -1,8 +1,9 @@
-import { Box, Center, Flex, Stack } from "@chakra-ui/react";
+import { Box, Flex, Stack } from "@chakra-ui/react";
 import { Sidebar } from "./Sidebar";
 import { SidebarProvider } from "./sidebar-context";
 import { TopSection } from "./TopSection";
 import { MiddleSection } from "./MiddleSection";
+import { BottomSection } from "./BottomSection";
 
 function App() {
   return (
@@ -13,11 +14,7 @@ function App() {
           <Stack h="full">
             <TopSection />
             <MiddleSection />
-            <Box pb="2">
-              <Center fontSize="xs" color="fg.muted">
-                ChatGPT can make mistakes. Check important info.
-              </Center>
-            </Box>
+            <BottomSection />
           </Stack>
         </Box>
       </Flex>
