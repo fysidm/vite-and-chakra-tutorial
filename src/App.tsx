@@ -1,6 +1,7 @@
 import { Box, Center, Flex, IconButton, Stack } from "@chakra-ui/react";
 
 import { SidebarIcon } from "./icons/sidebar-icons";
+import { Tooltip } from "./components/ui/tooltip";
 
 function App() {
   return (
@@ -8,9 +9,15 @@ function App() {
       <Box bg={"bg.muted"} w={"260px"}>
         <Stack>
           <Flex>
-            <IconButton variant={"ghost"}>
-              <SidebarIcon fontSize={"2xl"} color={"fg.subtle"} />
-            </IconButton>
+            <Tooltip
+              showArrow
+              content="Close sidebar"
+              positioning={{ placement: "right" }}
+            >
+              <IconButton variant={"ghost"}>
+                <SidebarIcon fontSize={"2xl"} color={"fg.muted"} />
+              </IconButton>
+            </Tooltip>
           </Flex>
         </Stack>
       </Box>
