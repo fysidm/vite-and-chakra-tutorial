@@ -15,6 +15,7 @@ import {
   NewChatIcon,
   SidebarIcon,
   SmallGPTIcon,
+  UpgradeIcon,
 } from "./icons/sidebar-icons";
 import { Tooltip } from "./components/ui/tooltip";
 
@@ -39,7 +40,7 @@ function App() {
               </IconButton>
             </Tooltip>
           </Flex>
-          <Stack px={2} gap={0}>
+          <Stack px={2} gap={0} flex={1}>
             <HStack
               _hover={{
                 layerStyle: "fill.muted",
@@ -77,6 +78,25 @@ function App() {
               </Link>
             </HStack>
           </Stack>
+          <Link
+            href="#"
+            _hover={{ textDecor: "none", layerStyle: "fill.muted" }}
+            borderRadius="lg"
+            py={2}
+            px={1}
+          >
+            <HStack>
+              <Circle size={8} fontSize="lg" borderWidth="1px">
+                <UpgradeIcon />
+              </Circle>
+              <Stack gap={0} fontWeight="medium">
+                <Text fontSize="sm">Upgrade plan</Text>
+                <Text fontSize="xs" color="fg.subtle">
+                  More access to the best models
+                </Text>
+              </Stack>
+            </HStack>
+          </Link>
         </Stack>
       </Box>
       <Box>
