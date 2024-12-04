@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  AbsoluteCenter,
   Box,
   Center,
   Circle,
@@ -96,6 +97,8 @@ function App() {
           </Flex>
           <Stack px={2} gap={0} flex={1}>
             <HStack
+              position="relative"
+              className="group"
               _hover={{
                 layerStyle: "fill.muted",
                 textDecor: "none",
@@ -104,6 +107,7 @@ function App() {
               h={10}
               borderRadius={"lg"}
               w={"100%"}
+              whiteSpace="nowrap"
             >
               <Link href="#" variant={"plain"} _hover={{ textDecor: "none" }}>
                 <Circle size={6} bg={"bg"} borderWidth={"1px"}>
@@ -113,6 +117,20 @@ function App() {
                   ChatGPT
                 </Text>
               </Link>
+              <AbsoluteCenter
+                axis="vertical"
+                right={2}
+                display="none"
+                _groupHover={{ display: "initial" }}
+              >
+                <Tooltip showArrow content="New chat">
+                  <NewChatIcon
+                    fontSize="md"
+                    color="fg.subtle"
+                    _hover={{ color: "fg.muted" }}
+                  />
+                </Tooltip>
+              </AbsoluteCenter>
             </HStack>
             <HStack
               _hover={{
@@ -123,6 +141,7 @@ function App() {
               h={10}
               borderRadius={"lg"}
               w={"100%"}
+              whiteSpace="nowrap"
             >
               <Link href="#" variant={"plain"} _hover={{ textDecor: "none" }}>
                 <ExploreGPTIcon fontSize={"md"} />
@@ -138,6 +157,7 @@ function App() {
             borderRadius="lg"
             py={2}
             px={1}
+            whiteSpace="nowrap"
           >
             <HStack>
               <Circle size={8} fontSize="lg" borderWidth="1px">
